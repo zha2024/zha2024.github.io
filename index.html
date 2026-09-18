@@ -1,7 +1,42 @@
+<!DOCTYPE html>
+<!--依旧DeekSeek-->
 <html>
-<title>zha2024 | 主页</title>
-<h1>无事勿入</h1>
-<p></p>
-<a href="./Ghroth.py">Ghroth的作业</a>
-<p></p>
+    <head>
+        <title>zha2024 | 主页</title>
+        <style>
+            body { margin: 0; height: 100vh; overflow: hidden; background-color: #280049; }
+            .flying-link {
+                position: fixed;
+                top: 200px;
+                left: 50%;
+                padding: 8px 16px;
+                background: #9ae834;
+                color: #ff0000;
+                text-decoration: none;
+                border-radius: 6px;
+                transition: left 1s ease, top 1s ease;
+            }
+            h1 { color: #ffffff; }
+        </style>
+    </head>
+    <body>
+        <marquee><h1>无事勿入（特别是潘子墨）</h1></marquee>
+        <a class="flying-link" href="./second.html" target="_blank" onclick="return confirm('居然点中了\n（国际友好手势）')">给我下载！</a>
+        <script>
+            const link = document.querySelector('.flying-link');
+            document.addEventListener('mousemove', (e) => {
+                const rect = link.getBoundingClientRect();
+                const linkX = rect.left + rect.width / 2;
+                const linkY = rect.top + rect.height / 2;
+                const dist = Math.hypot(e.clientX - linkX, e.clientY - linkY);
+                if (dist < 50) {
+                    const maxX = window.innerWidth - link.offsetWidth;
+                    const maxY = window.innerHeight - link.offsetHeight;
+                    const minY = 120;
+                    link.style.left = Math.random() * maxX + 'px';
+                    link.style.top  = minY + Math.random() * (maxY - minY) + 'px';
+                }
+            });
+        </script>
+    </body>
 </html>
